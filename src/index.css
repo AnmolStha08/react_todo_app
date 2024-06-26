@@ -1,0 +1,207 @@
+/* General styles remain the same */
+
+/* Example of making .nav responsive */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.navItem {
+  margin: 0 10px;
+}
+
+.navButton {
+  padding: 5px 10px;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.text_inline {
+  display: flex;
+  align-items: center;
+}
+
+.text_inline button {
+  margin-right: 10px;
+}
+
+.text_inline p {
+  margin: 0 10px;
+}
+
+/* CSS for .box and related elements */
+.box {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.box label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.box input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.box button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.box button:hover {
+  background-color: #0056b3;
+}
+
+.box .text_inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box .text_inline p {
+  margin: 0;
+}
+
+.box .text_inline button {
+  margin-left: 10px;
+}
+
+/* CSS for .Todo_Box */
+.Todo_Box {
+  width: 95%; /* Adjust width for responsiveness */
+  max-width: 400px; /* Maximum width for larger screens */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: auto;
+}
+
+.Todo_Box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Todo_Box input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Todo_Box button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Todo_Box button:hover {
+  background-color: #0056b3;
+}
+
+/* CSS for .Todo_Table */
+.Todo_Table table {
+  margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Todo_Table th, .Todo_Table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.Todo_Table .strike {
+  text-decoration: line-through;
+}
+
+/* Responsive styles using media queries */
+
+@media (max-width: 768px) {
+  /* Adjust styles for tablets and smaller screens */
+  .box {
+    max-width: 100%;
+  }
+
+  .Todo_Box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for mobile phones */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navItem {
+    margin: 10px 0;
+  }
+
+  .navButton {
+    margin-top: 10px;
+  }
+
+  .box {
+    padding: 10px;
+  }
+
+  .box h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .Todo_Box {
+    padding: 10px;
+  }
+
+  .Todo_Box input {
+    margin-bottom: 5px;
+  }
+
+  .Todo_Box button {
+    padding: 8px;
+  }
+
+  .Todo_Table th, .Todo_Table td {
+    padding: 8px;
+  }
+}
