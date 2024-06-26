@@ -21,7 +21,7 @@ function App() {
   const addUser = (data) => {
     const originalUsers = [...users];
     setUsers([...users, { ...data, id: parseInt(users[users.length - 1]?.id || 0) + 1 }]);
-    axios.post("http://192.168.1.66:8000/users/", data)
+    axios.post("http://localhost:8000/users/", data)
       .then(res => setUsers([...users, res.data]))
       .catch(err => {
         setErrors(err.message);
@@ -50,7 +50,7 @@ function App() {
   
   const loginUser = async (data) => {
     try {
-      const response = await axios.post("http://192.168.1.66:8000/logins/", data);
+      const response = await axios.post("http://localhost:8000/logins/", data);
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -86,7 +86,7 @@ function App() {
 
   const logoutUser = async () => {
     try {
-      await axios.post("http://192.168.1.66:8000/logouts/", {}, {
+      await axios.post("http://localhost:8000/logouts/", {}, { 
         headers: {
           Authorization: `Token ${authToken}` 
         }
@@ -133,7 +133,7 @@ useEffect(() => {
       const loggedInUserString = localStorage.getItem('loggedInUser');
       if (loggedInUserString) {
         const loggedInUser = JSON.parse(loggedInUserString);
-        const response = await axios.get(`http://192.168.1.66:8000/todos/?username=${loggedInUser.username}`, {
+        const response = await axios.get(`http://127.0.0.1:8000/todos/?username=${loggedInUser.username}`, {
           headers: {
             Authorization: `Token ${localStorage.getItem('token')}`
           }
@@ -167,7 +167,7 @@ useEffect(() => {
     setTodos( [ ...todos, data={...data, id:parseInt(todos[todos.length-1].id) + 1, status:"Active"}] )
     const loggedInUserString = localStorage.getItem('loggedInUser');
     const loggedInUser = JSON.parse(loggedInUserString);
-    axios.post(`http://192.168.1.66:8000/todos/?username=${loggedInUser.username}`, data)
+    axios.post(`http://127.0.0.1:8000/todos/?username=${loggedInUser.username}`, data)
     .then(res => setTodos([...todos, res.data]))
     .catch(err => {
       setErrors(err.message)
@@ -178,7 +178,7 @@ useEffect(() => {
 const delTodo = (id) => {
   setTodos(todos.filter( todo => todo.id != id ))
   const originalTodos = [...todos]
-  axios.delete("http://192.168.1.66:8000/todos/" + id)
+  axios.delete("http://localhost:8000/todos/" + id)
   .catch(err => {
     setErrors(err.message)
     setTodos(originalTodos)
@@ -190,7 +190,7 @@ const delTodo = (id) => {
     e.preventDefault();
     const updatedTodo = { ...todo, task: text };
     setTodos(todos.map(t => t.id === id ? updatedTodo : t));
-    axios.patch("http://192.168.1.66:8000/todos/" + id, updatedTodo)
+    axios.patch("http://localhost:8000/todos/" + id, updatedTodo)
       .catch(err => setErrors(err.message));
   };
   const completeTodo = (e, id, todo) => {
@@ -199,14 +199,14 @@ const delTodo = (id) => {
       console.log("okay")
       setTodos(todos.map(todo => todo.id == id ? { ...todo, completed:true}: todo))
       const updatedTodo = { ...todo, completed:true}
-      axios.patch("http://192.168.1.66:8000/todos/" + id, updatedTodo)
+      axios.patch("http://localhost:8000/todos/" + id, updatedTodo)
     }
     else
     {
       console.log("omo")
       setTodos(todos.map(todo => todo.id == id ? { ...todo, completed:false}: todo))
       const updatedTodo = { ...todo, completed:false}
-      axios.patch("http://192.168.1.66:8000/todos/" + id, updatedTodo)
+      axios.patch("http://localhost:8000/todos/" + id, updatedTodo)
     }
 
    
